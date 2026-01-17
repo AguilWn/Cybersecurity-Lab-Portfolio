@@ -19,3 +19,8 @@ Windows 10/11 (Evaluation ISO)
 **Networking:** VirtualBox NAT Network (Isolated from Host)
 
 **Documentation:** Draw.io (Network Diagrams), Markdown
+
+
+**6. Lessons Learned And Challenges**
+
+* January 18, 2026: During the VirtualBox installation, I encountered a dependency warning regarding Python Core packages. After researching, I determined these were only necessary for Python automation bindings. To maintain a lean lab environment, I proceeded with the standard installation, as the core hypervisor functions were not affected.

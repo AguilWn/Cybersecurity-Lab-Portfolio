@@ -20,8 +20,8 @@ I am a dedicated IT Support professional with a strong foundation in systems adm
 ## 📜 Certifications & Education
 - ✅ **Google IT Support Professional Certificate**
 - ✅ **CompTIA Security+ Certification Prep** (LearnKarts)
-- 🎓 **[Bachelor of Science in Information Technology]** - [St.Paul Iloilo University]
-- 🎓 **[Post-Graduate Diploma in Applied Management (Business Information Systems)]** - [Otago Polytechnic Auckland International Campus]
+- 🎓 **Bachelor of Science in Information Technology** - St.Paul Iloilo University
+- 🎓 **Post-Graduate Diploma in Applied Management (Business Information Systems)** - Otago Polytechnic Auckland International Campus
 
 ---
 
@@ -35,8 +35,8 @@ I am a dedicated IT Support professional with a strong foundation in systems adm
 ## 📈 My Lab Projects
 *Click the links below to see my detailed lab documentation.*
 
-1. **[Secure Virtual Network Setup](Coming Soon)**: Building a sandbox with Linux & Windows.
-2. **[Coming Soon]** SIEM Deployment and Log Analysis.
+1. **[Secure Virtual Network Setup] (Coming Soon)**: Building a sandbox with Linux & Windows.
+2. **Coming Soon** SIEM Deployment and Log Analysis.
 
 ---
 

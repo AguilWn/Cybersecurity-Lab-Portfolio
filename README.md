@@ -1,7 +1,7 @@
 # Cybersecurity-Lab-Portfolio
 A Collection of Cybersecurity Home Labs created by me, for employers and aspiring professionals like me
 
-# Hi there, I'm [Your Name] 👋
+# Hi there, I'm Wennymar Aguil 👋
 
 ### 🛡️ Aspiring SOC Analyst | IT Support Professional
 **Location:** Abu Dhabi, UAE (Previously New Zealand)

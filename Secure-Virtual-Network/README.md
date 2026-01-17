@@ -1,4 +1,4 @@
-**[Project Title: Building a Secure Virtualized Network Environment]**
+*[Project Title: Building a Secure Virtualized Network Environment]*
 
 **Author:** Wennymar Aguil
 

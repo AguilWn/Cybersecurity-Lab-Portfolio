@@ -47,4 +47,4 @@ Running the installer with elevated Administrative privileges to ensure proper d
 
 **Log Analysis:** When an installer fails, always refer to the MSI or VirtualBox installation logs to move beyond generic error messages and find the specific root cause.
 
-**Clean State Recovery:** Utilizing advanced uninstallation tools like Revo Uninstaller is a "best practice" when a failed installation leaves behind registry "noise" that might block future attempts.
+**Clean State Recovery:** Utilizing advanced uninstallation tools like [Revo Uninstaller](https://www.revouninstaller.com/) is a "best practice" when a failed installation leaves behind registry "noise" that might block future attempts.

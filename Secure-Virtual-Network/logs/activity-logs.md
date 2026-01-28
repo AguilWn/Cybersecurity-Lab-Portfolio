@@ -47,3 +47,17 @@
 2. **Administrative Access:** Created a primary administrative user account `soc-admin`.
    - **SOC Best Practice:** Avoided generic or default usernames to enhance accountability and security posture from the initial setup phase.
    - **Evidence:** [image_6d0e9a.png](../images/installer-profile-config.png)
+
+
+---
+### 📅 Activity Log: January 29, 2026
+**Phase: Post-Install Hardening & Service Validation**
+
+1. **System Initialization:** Successfully completed the manual installation of Ubuntu Server 25.10.
+2. **Network Verification:** Executed `ip addr sho enp0s3` to confirm the network interface is correctly bound to the lab subnet.
+   - **Assigned IP:** 10.0.2.3/24
+   - **Status:** Connectivity verified.
+3. **Security Service Audit:** Confirmed that the OpenSSH server (`ssh.service`) is active and running, allowing for secure remote management.
+4. **Technical Evidence:**
+   - ![Post-Install Validation](../images/post-install-validation.png)
+

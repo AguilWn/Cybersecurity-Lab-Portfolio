@@ -36,3 +36,14 @@
 2. **Storage Provisioning:** - **Action:** Configured the 25GB VDI using a Guided LVM layout.
    - **Technical Outcome:** Established an 11.5GB root (/) partition and a 2GB boot partition, leaving unallocated space in the Volume Group for future forensic or logging expansion.
    - **Evidence:** ![image_6d1e14.png](../images/installer-storage-summary.png)
+  
+---
+
+### 📅 Activity Log: January 29, 2026
+**Phase: Profile Configuration & Identity Management**
+
+1. **Host Identification:** Configured the server with the hostname `soc-mgmt-01`.
+   - **Rationale:** Established a standardized naming convention to signify the server's role as a management and monitoring node within the SOC lab.
+2. **Administrative Access:** Created a primary administrative user account `soc-admin`.
+   - **SOC Best Practice:** Avoided generic or default usernames to enhance accountability and security posture from the initial setup phase.
+   - **Evidence:** ![image_6d0e9a.png](../images/installer-profile-config.png)

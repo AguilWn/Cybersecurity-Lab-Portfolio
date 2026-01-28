@@ -11,8 +11,7 @@
 #### 2. Network Infrastructure (Lab Subnet)
 * **Action:** Created a dedicated **NAT Network** named `SOC-Lab-Network`.
 * **Configuration:** Assigned the `10.0.2.0/24` IPv4 prefix with DHCP enabled.
-* **Evidence:**
-* ![Network Config](../images/vbox-nat-network-setup.png)
+* **Evidence:** [Network Config](../images/vbox-nat-network-setup.png)
 * **SOC Rationale:** Isolating lab traffic from the host OS is a fundamental security practice for malware analysis and network monitoring.
 
 #### 3. Management Server Provisioning (soc-mgmt-01)
@@ -23,9 +22,17 @@
 * **Troubleshooting:** Identified a potential "Unattended Installation" script (aux-iso) that would have created a generic `vboxuser` account.
 * **Action:** Manually detached the automated ISO and mounted `ubuntu-25.10-live-server-amd64.iso` to the IDE controller.
 * **Critical Incident:** Successfully identified and bypassed a VirtualBox prompt that would have deleted the entire IDE hardware interface.
-* **Evidence:** 
-* ![image_6da15f.png](../images/troubleshooting-controller-risk.png)
-    * ![image_6d9d5a.png](../images/vm-storage-final-config.png)
+* **Evidence:** [image_6da15f.png](../images/troubleshooting-controller-risk.png)
+    * [image_6d9d5a.png](../images/vm-storage-final-config.png)
 
 ---
-**Status:** System Bootstrapped. Ready for Manual OS Installation.
+
+### 📅 Activity Log: January 29, 2026
+**Phase: OS Installation & Resource Validation**
+
+1. **Network Integrity Check:** Verified that the management server successfully requested and received a lease from the DHCP server on the `SOC-Lab-Network`.
+   - **Assigned IP:** 10.0.2.3/24 [image_6d24db.png]
+   - **Status:** Connectivity to Ubuntu archive mirrors confirmed through successful package list fetch [image_6d219b.png].
+2. **Storage Provisioning:** - **Action:** Configured the 25GB VDI using a Guided LVM layout.
+   - **Technical Outcome:** Established an 11.5GB root (/) partition and a 2GB boot partition, leaving unallocated space in the Volume Group for future forensic or logging expansion.
+   - **Evidence:** ![image_6d1e14.png](../images/installer-storage-summary.png)

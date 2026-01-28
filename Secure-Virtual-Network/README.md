@@ -55,7 +55,7 @@ During the initial deployment, the Oracle VirtualBox 7.2.4 installer failed with
 #### **4. Post-Deployment Hardening**
 * **Patch Management:** Logged into the new system and immediately ran `sudo apt update` and `sudo apt upgrade -y`.
 * **Verification:** Confirmed that critical system packages (including `apparmor`, `linux-firmware`, and `snapd`) were patched to mitigate "Day 0" security risks.
-* **Reference Image:** ![Patch Management](Images/ubuntu-first-update.png)
+* **Reference Image:** ![Patch Management](Images/ubuntu-first-upgrade.png)
 
 ---
 

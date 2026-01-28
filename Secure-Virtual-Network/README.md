@@ -81,3 +81,31 @@ After resolving the initial hypervisor installation issues, I proceeded with pro
 **Current Status:** As seen in the UI overview, the VM is currently attached to a standard NAT adapter (Intel PRO/1000 MT Desktop).
 
 _Next Milestone:_ The next step is to transition this from a simple NAT interface to a dedicated NAT Network to allow for multi-node communication between the Ubuntu server and future Windows clients.
+
+
+**📅 Activity Log: January 28, 2026**
+**Project Phase:** Virtual Infrastructure Deployment & OS Provisioning
+
+**1. Environment Troubleshooting & Optimization**
+Root Cause Analysis (Hypervisor): Diagnosed that the previous VirtualBox "Fatal Error" was caused by attempting an installation in a secondary directory without meeting specific security/permission requirements.
+
+**System Remediation**: Performed a deep system clean using Revo Uninstaller to remove orphaned registry keys and files from the failed installation.
+
+**Directory Redirection:** Successfully redirected the Default Machine Folder to D:\Virtual Machines within the Global Preferences menu. This solved the issue of missing network management tools and optimized storage by keeping heavy VM data off the C: drive.
+
+**2. Virtual Machine Provisioning (Ubuntu-SOC-Lab)**
+Hardware Allocation: Built a virtual server "shell" with 2048 MB RAM, 2 Processors, and a 25.00 GB Virtual Hard Disk (VDI).
+
+Network Segmentation: Configured a dedicated NAT Network (10.0.2.0/24) to isolate the lab environment from the host machine while allowing internal multi-node communication.
+
+**3. OS Installation & Secure Implementation**
+Principle of Least Functionality: During the Ubuntu 25.10 Server installation, deliberately bypassed all "Featured Server Snaps" (e.g., AWS-CLI, PowerShell). This was a security decision to minimize the attack surface of the management server.
+
+**Identity Management:** Established a professional naming convention, setting the hostname to soc-mgmt-01 and creating a dedicated soc-admin user profile.
+
+**Post-Install Hardware Management:** Manually resolved a cdrom.mount failure during the first reboot by forcing the ejection of the virtual ISO via the hypervisor settings.
+
+**4. Post-Deployment Hardening**
+Patch Management: Logged into the new system and immediately ran sudo apt update and sudo apt upgrade -y.
+
+**Verification:** Confirmed that critical system packages (including apparmor, linux-firmware, and snapd) were updated to mitigate "Day 0" security risks.

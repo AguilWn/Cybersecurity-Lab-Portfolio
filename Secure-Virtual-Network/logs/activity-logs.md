@@ -61,3 +61,11 @@
 4. **Technical Evidence:**
    - ![Post-Install Validation](../images/post-install-validation.png)
 
+---
+
+### 📅 Activity Log: January 29, 2026
+**Current Status:** Deployment Complete / Staging for Hardening
+
+* **System State:** Ubuntu Server 25.10 is operational on `10.0.2.3`. [image_6c307c.png] -> `../images/post-install-validation.png`
+* **Snapshot Created:** "Fresh Install - Fully Patched"
+* **Next Objective:** Implement **Host-Based Firewall (UFW)** to enforce the Principle of Least Privilege.

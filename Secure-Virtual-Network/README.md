@@ -48,3 +48,36 @@ Running the installer with elevated Administrative privileges to ensure proper d
 **Log Analysis:** When an installer fails, always refer to the MSI or VirtualBox installation logs to move beyond generic error messages and find the specific root cause.
 
 **Clean State Recovery:** Utilizing advanced uninstallation tools like [Revo Uninstaller](https://www.revouninstaller.com/) is a "best practice" when a failed installation leaves behind registry "noise" that might block future attempts.
+
+
+**📅 Activity Log: January 28, 2026**
+**Technical Phase:** Virtual Machine Provisioning & Path Optimization
+After resolving the initial hypervisor installation issues, I proceeded with provisioning the primary Linux node for the SOC lab. This phase involved custom hardware allocation and correcting default directory behaviors to align with best practices for storage management.
+
+**1. Virtual Machine Configuration (Ubuntu-SOC-Lab)** Using the Oracle VirtualBox "New Virtual Machine" wizard, I provisioned the initial server node with the following specifications to ensure a balance between performance and host system stability:
+
+**Virtual Machine Name:** Ubuntu-SOC-Lab
+
+**Operating System:** Ubuntu 25.10 (64-bit) Server Edition
+
+**Memory Allocation:** 2048 MB (2GB RAM)
+
+**Processor Core Count:** 2 Virtual CPUs
+
+**Storage:** 25.00 GB Virtual Hard Disk (VDI)
+
+**ISO Image:** ubuntu-25.10-live-server-amd64.iso
+
+**2. Storage Architecture & Path Redirection (Troubleshooting)**
+
+**Challenge:** During the initial setup, I observed that the "Network" management options were not properly visible/accessible due to the default VirtualBox configuration pointing to an restricted system path.
+
+**Action:** I accessed the Global Preferences and redirected the Default Machine Folder to my secondary storage: D:\Virtual Machines.
+
+**Result:** This resolved the visibility issue and ensured that all future high-volume data (Virtual Hard Disks) is stored on the D: drive, preventing the C: system drive from reaching capacity during lab expansion.
+
+**3. Initial Network State**
+
+**Current Status:** As seen in the UI overview, the VM is currently attached to a standard NAT adapter (Intel PRO/1000 MT Desktop).
+
+_Next Milestone:_ The next step is to transition this from a simple NAT interface to a dedicated NAT Network to allow for multi-node communication between the Ubuntu server and future Windows clients.

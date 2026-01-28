@@ -38,24 +38,24 @@ During the initial deployment, the Oracle VirtualBox 7.2.4 installer failed with
 * **Name:** `Ubuntu-SOC-Lab`
 * **Resource Allocation:** 2048 MB RAM | 2 Virtual CPUs | 25.00 GB VDI
 * **ISO Image:** `ubuntu-25.10-live-server-amd64.iso`
-* **Reference Image:** `![Hardware Setup](images/vbox-hardware-setup.png)`
+* **Reference Image:** `![Hardware Setup](Images/vbox-hardware-setup.png)`
 
 #### **2. Storage Architecture & Path Redirection**
 * **Challenge:** Observed that "Network" management options were restricted due to the initial installation path configuration.
 * **Action:** Accessed Global Preferences and redirected the **Default Machine Folder** to `D:\Virtual Machines`.
 * **Outcome:** Resolved UI visibility issues and ensured high-volume VM data is stored on secondary storage, preserving the integrity of the primary system drive.
-* **Reference Image:** `![Path Redirection](images/vbox-path-redirection.png)`
+* **Reference Image:** `![Path Redirection](Images/vbox-path-redirection.png)`
 
 #### **3. OS Installation & Secure Implementation**
 * **Principle of Least Functionality:** During the Ubuntu installation, I deliberately bypassed all "Featured Server Snaps" (e.g., AWS-CLI, PowerShell). This minimizes the attack surface by ensuring only essential services are running on the management server.
 * **Identity Management:** Configured a professional naming convention with the hostname `soc-mgmt-01` and a dedicated `soc-admin` profile.
 * **Post-Install Fix:** Resolved a `cdrom.mount` failure during the first reboot by manually forcing the ejection of the virtual ISO via hypervisor settings.
-* **Reference Image:** `![Secure Installation](images/ubuntu-install-snaps.png)`
+* **Reference Image:** `![Secure Installation](Images/ubuntu-install-snaps.png)`
 
 #### **4. Post-Deployment Hardening**
 * **Patch Management:** Logged into the new system and immediately ran `sudo apt update` and `sudo apt upgrade -y`.
 * **Verification:** Confirmed that critical system packages (including `apparmor`, `linux-firmware`, and `snapd`) were patched to mitigate "Day 0" security risks.
-* **Reference Image:** `![Patch Management](images/ubuntu-first-update.png)`
+* **Reference Image:** `![Patch Management](Images/ubuntu-first-update.png)`
 
 ---
 

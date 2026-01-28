@@ -1,111 +1,65 @@
-*[Project Title: Building a Secure Virtualized Network Environment]*
+# Building a Secure Virtualized Network Environment
 
-**Author:** Wennymar Aguil
-
-**Date:** January 2026
-
+**Author:** Wennymar Aguil  
+**Date:** January 2026  
 **Category:** Virtualization / Systems Administration / Security Foundations
 
-**1. Executive Summary**
-The goal of this project was to design and deploy a controlled laboratory environment using Oracle VM VirtualBox. This lab serves as a secure "sandbox" to practice network monitoring, patch management, and security testing without risking the host machine's integrity. By configuring a Linux-based server (Ubuntu) alongside a Windows client, I established a cross-platform environment for analyzing system telemetry.
+---
 
-**2. Tools & Technologies**
-**Hypervisor:** Oracle VM VirtualBox
+## 1. Executive Summary
+The goal of this project was to design and deploy a controlled laboratory environment using Oracle VM VirtualBox. This lab serves as a secure "sandbox" to practice network monitoring, patch management, and security testing without risking the host machine's integrity. By configuring a Linux-based server (Ubuntu) alongside a Windows client, I established a cross-platform environment for analyzing system telemetry and practicing SOC Analyst workflows.
 
-**Operating Systems:** * Ubuntu Server/Desktop (Linux)
+## 2. Tools & Technologies
+* **Hypervisor:** Oracle VM VirtualBox 7.2.4
+* **Operating System:** Ubuntu Server 25.10 (Linux)
+* **Secondary OS:** Windows 10/11 (Evaluation ISO)
+* **Networking:** VirtualBox NAT Network (10.0.2.0/24)
+* **Maintenance:** Revo Uninstaller (System Cleanup)
+* **Documentation:** Markdown
 
-Windows 10/11 (Evaluation ISO)
+---
 
-**Networking:** VirtualBox NAT Network (Isolated from Host)
+## 3. Implementation & Troubleshooting Logs
 
-**Documentation:** Draw.io (Network Diagrams), Markdown
+### 📅 Activity Log: January 18, 2026
+**Technical Challenge: VirtualBox Installation Failure**
+During the initial deployment, the Oracle VirtualBox 7.2.4 installer failed with a generic "Fatal error".
 
+* **Investigation:** The failure was traced to an attempt to install core software on a secondary storage drive, which triggered security and permission conflicts.
+* **System Remediation:** Utilized **Revo Uninstaller** to remove partial installation files and purge orphaned registry entries to ensure a clean state.
+* **Resolution:** Reinstalled the hypervisor using the default `C:\Program Files` path with elevated **Administrative privileges**, which successfully bypassed the previous directory requirements.
 
-**6. Lessons Learned And Challenges**
+---
 
-**📅 Activity Log: January 18, 2026**
-**Technical Challenge**: VirtualBox Installation Failure (Fatal Error)
-During the initial deployment of the lab environment, the Oracle VirtualBox 7.2.4 installer failed with a generic "Fatal error during installation" message.
+### 📅 Activity Log: January 28, 2026
+**Phase: Virtual Machine Provisioning & Storage Optimization**
 
-**Investigation & Troubleshooting Steps:**
+#### **1. Virtual Machine Configuration (Ubuntu-SOC-Lab)**
+* **Name:** `Ubuntu-SOC-Lab`
+* **Resource Allocation:** 2048 MB RAM | 2 Virtual CPUs | 25.00 GB VDI
+* **ISO Image:** `ubuntu-25.10-live-server-amd64.iso`
+* **Reference Image:** `![Hardware Setup](images/vbox-hardware-setup.png)`
 
-**Root Cause Analysis**: I initially attempted to install the software on a secondary storage drive. On the second attempt, the installer explicitly flagged an "Invalid Installation Directory" error, citing unmet security requirements. This confirmed that VirtualBox 7.x requires specific directory permissions typically found only on the primary system drive (C:).
+#### **2. Storage Architecture & Path Redirection**
+* **Challenge:** Observed that "Network" management options were restricted due to the initial installation path configuration.
+* **Action:** Accessed Global Preferences and redirected the **Default Machine Folder** to `D:\Virtual Machines`.
+* **Outcome:** Resolved UI visibility issues and ensured high-volume VM data is stored on secondary storage, preserving the integrity of the primary system drive.
+* **Reference Image:** `![Path Redirection](images/vbox-path-redirection.png)`
 
-**System Cleanup**: To ensure a clean state, I utilized Revo Uninstaller to remove the partial installation. This was critical for purging orphaned registry entries and leftover system files that could conflict with a fresh install.
+#### **3. OS Installation & Secure Implementation**
+* **Principle of Least Functionality:** During the Ubuntu installation, I deliberately bypassed all "Featured Server Snaps" (e.g., AWS-CLI, PowerShell). This minimizes the attack surface by ensuring only essential services are running on the management server.
+* **Identity Management:** Configured a professional naming convention with the hostname `soc-mgmt-01` and a dedicated `soc-admin` profile.
+* **Post-Install Fix:** Resolved a `cdrom.mount` failure during the first reboot by manually forcing the ejection of the virtual ISO via hypervisor settings.
+* **Reference Image:** `![Secure Installation](images/ubuntu-install-snaps.png)`
 
-**Environmental Prep:** Performed a full system reboot to clear any locked system processes related to the virtual network drivers.
+#### **4. Post-Deployment Hardening**
+* **Patch Management:** Logged into the new system and immediately ran `sudo apt update` and `sudo apt upgrade -y`.
+* **Verification:** Confirmed that critical system packages (including `apparmor`, `linux-firmware`, and `snapd`) were patched to mitigate "Day 0" security risks.
+* **Reference Image:** `![Patch Management](images/ubuntu-first-update.png)`
 
-**Final Solution:** The third installation attempt was successful. The resolution involved:
+---
 
-Reverting the installation path to the default directory: C:\Program Files\Oracle\VirtualBox.
-
-Running the installer with elevated Administrative privileges to ensure proper driver registration.
-
-**Key Takeaways for SOC Documentation:**
-
-**Standardize Installation Paths:** Core hypervisor software should be installed on the primary OS drive to satisfy security permission requirements, though Virtual Machine images (.vdi) can be safely stored on secondary drives later.
-
-**Log Analysis:** When an installer fails, always refer to the MSI or VirtualBox installation logs to move beyond generic error messages and find the specific root cause.
-
-**Clean State Recovery:** Utilizing advanced uninstallation tools like [Revo Uninstaller](https://www.revouninstaller.com/) is a "best practice" when a failed installation leaves behind registry "noise" that might block future attempts.
-
-
-**📅 Activity Log: January 28, 2026**
-**Technical Phase:** Virtual Machine Provisioning & Path Optimization
-After resolving the initial hypervisor installation issues, I proceeded with provisioning the primary Linux node for the SOC lab. This phase involved custom hardware allocation and correcting default directory behaviors to align with best practices for storage management.
-
-**1. Virtual Machine Configuration (Ubuntu-SOC-Lab)** Using the Oracle VirtualBox "New Virtual Machine" wizard, I provisioned the initial server node with the following specifications to ensure a balance between performance and host system stability:
-
-**Virtual Machine Name:** Ubuntu-SOC-Lab
-
-**Operating System:** Ubuntu 25.10 (64-bit) Server Edition
-
-**Memory Allocation:** 2048 MB (2GB RAM)
-
-**Processor Core Count:** 2 Virtual CPUs
-
-**Storage:** 25.00 GB Virtual Hard Disk (VDI)
-
-**ISO Image:** ubuntu-25.10-live-server-amd64.iso
-
-**2. Storage Architecture & Path Redirection (Troubleshooting)**
-
-**Challenge:** During the initial setup, I observed that the "Network" management options were not properly visible/accessible due to the default VirtualBox configuration pointing to an restricted system path.
-
-**Action:** I accessed the Global Preferences and redirected the Default Machine Folder to my secondary storage: D:\Virtual Machines.
-
-**Result:** This resolved the visibility issue and ensured that all future high-volume data (Virtual Hard Disks) is stored on the D: drive, preventing the C: system drive from reaching capacity during lab expansion.
-
-**3. Initial Network State**
-
-**Current Status:** As seen in the UI overview, the VM is currently attached to a standard NAT adapter (Intel PRO/1000 MT Desktop).
-
-_Next Milestone:_ The next step is to transition this from a simple NAT interface to a dedicated NAT Network to allow for multi-node communication between the Ubuntu server and future Windows clients.
-
-
-**📅 Activity Log: January 28, 2026**
-**Project Phase:** Virtual Infrastructure Deployment & OS Provisioning
-
-**1. Environment Troubleshooting & Optimization**
-Root Cause Analysis (Hypervisor): Diagnosed that the previous VirtualBox "Fatal Error" was caused by attempting an installation in a secondary directory without meeting specific security/permission requirements.
-
-**System Remediation**: Performed a deep system clean using Revo Uninstaller to remove orphaned registry keys and files from the failed installation.
-
-**Directory Redirection:** Successfully redirected the Default Machine Folder to D:\Virtual Machines within the Global Preferences menu. This solved the issue of missing network management tools and optimized storage by keeping heavy VM data off the C: drive.
-
-**2. Virtual Machine Provisioning (Ubuntu-SOC-Lab)**
-Hardware Allocation: Built a virtual server "shell" with 2048 MB RAM, 2 Processors, and a 25.00 GB Virtual Hard Disk (VDI).
-
-Network Segmentation: Configured a dedicated NAT Network (10.0.2.0/24) to isolate the lab environment from the host machine while allowing internal multi-node communication.
-
-**3. OS Installation & Secure Implementation**
-Principle of Least Functionality: During the Ubuntu 25.10 Server installation, deliberately bypassed all "Featured Server Snaps" (e.g., AWS-CLI, PowerShell). This was a security decision to minimize the attack surface of the management server.
-
-**Identity Management:** Established a professional naming convention, setting the hostname to soc-mgmt-01 and creating a dedicated soc-admin user profile.
-
-**Post-Install Hardware Management:** Manually resolved a cdrom.mount failure during the first reboot by forcing the ejection of the virtual ISO via the hypervisor settings.
-
-**4. Post-Deployment Hardening**
-Patch Management: Logged into the new system and immediately ran sudo apt update and sudo apt upgrade -y.
-
-**Verification:** Confirmed that critical system packages (including apparmor, linux-firmware, and snapd) were updated to mitigate "Day 0" security risks.
+## 4. Key Takeaways for SOC Documentation
+* **Standardize Installation Paths:** Core hypervisor software should be installed on the primary OS drive for stability, while VM images (.vdi) are moved to secondary storage to manage disk capacity.
+* **Least Functionality:** Reducing the initial software footprint is a fundamental security hardening step.
+* **Log Analysis:** When installers fail, checking the specific error logs allows for data-driven troubleshooting rather than trial-and-error.

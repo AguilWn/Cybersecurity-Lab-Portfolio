@@ -46,4 +46,4 @@
    - **Rationale:** Established a standardized naming convention to signify the server's role as a management and monitoring node within the SOC lab.
 2. **Administrative Access:** Created a primary administrative user account `soc-admin`.
    - **SOC Best Practice:** Avoided generic or default usernames to enhance accountability and security posture from the initial setup phase.
-   - **Evidence:** ![image_6d0e9a.png](../images/installer-profile-config.png)
+   - **Evidence:** ![image_6d0e9a.png](../images/installer-guided-storage.png)

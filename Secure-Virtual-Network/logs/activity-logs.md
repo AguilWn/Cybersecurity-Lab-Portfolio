@@ -80,3 +80,4 @@
 * **SOC Takeaway:** This exercise demonstrates the vulnerability of "Physical Access." In a production environment, this risk is mitigated by using full-disk encryption (LUKS) and BIOS/GRUB passwords to prevent unauthorized boot-level tampering.
 * **Evidence:**
   - ![Emergency Recovery](../images/emergency-recovery-grub.png)
+* **SOC Takeaway:** This highlights the importance of physical security. If an attacker has physical access to a machine (or the hypervisor), they can gain root access by tampering with the bootloader.

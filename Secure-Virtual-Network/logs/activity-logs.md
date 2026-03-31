@@ -69,3 +69,14 @@
 * **System State:** Ubuntu Server 25.10 is operational on `10.0.2.3`. [image_6c307c.png] -> `../images/post-install-validation.png`
 * **Snapshot Created:** "Fresh Install - Fully Patched"
 * **Next Objective:** Implement **Host-Based Firewall (UFW)** to enforce the Principle of Least Privilege.
+
+* ### 📅 Activity Log: March 31, 2026
+**Phase: Emergency Access & Account Recovery**
+
+* **Incident:** Lost administrative access to the `soc-admin` account due to credential expiration or lockout.
+* **Technical Remediation:** 1. Performed an interrupt of the GRUB bootloader.
+  2. Modified the kernel boot parameters (`rw init=/bin/bash`) to bypass standard authentication and gain a root shell.
+  3. Re-initialized credentials for the `soc-admin` account using the `passwd` utility.
+* **SOC Takeaway:** This exercise demonstrates the vulnerability of "Physical Access." In a production environment, this risk is mitigated by using full-disk encryption (LUKS) and BIOS/GRUB passwords to prevent unauthorized boot-level tampering.
+* **Evidence:**
+  - ![Emergency Recovery](../images/emergency-recovery-grub.png)

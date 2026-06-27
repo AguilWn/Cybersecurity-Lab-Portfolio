@@ -11,7 +11,7 @@ A Collection of Cybersecurity Home Labs created by me, for employers and aspirin
 ## 🚀 About Me
 I am a dedicated IT Support professional with a strong foundation in systems administration and a passion for cybersecurity. After studying and working in **New Zealand**, I am currently based in the **UAE**, where I am honing my technical skills and building hands-on security labs. My goal is to transition into a **SOC Analyst** role and eventually return to the New Zealand tech sector.
 
-- 🔭 I’m currently working on: **Building a SOC Lab with Wazuh and VirtualBox.**
+- 🔭 I’m currently working on: **Building a fully isolated SOC Home Lab — Phase 1 complete, currently hardening Linux servers.**
 - ⚡ In-Progress: **Preparing for CompTIA A+ and Security+ exams.**
 - 💬 Ask me about: **IT Support, Virtualization, and New Zealand's tech scene.**
 
@@ -35,8 +35,11 @@ I am a dedicated IT Support professional with a strong foundation in systems adm
 ## 📈 My Lab Projects
 *Click the links below to see my detailed lab documentation.*
 
-1. **[Secure Virtual Network Setup] (Coming Soon)**: Building a sandbox with Linux & Windows.
-2. **Coming Soon** SIEM Deployment and Log Analysis.
+1. [01 — Lab Foundation](./01-Lab-Foundation/README.md): Deployed a fully isolated SOC home lab with pfSense, Ubuntu Server, and Kali Linux. ✅ Complete
+2. 02 — Linux Hardening 🔨 In Progress
+3. 03 — SIEM & Log Monitoring (Wazuh) 🔲 Planned
+4. 04 — Attack Simulation & Detection 🔲 Planned
+5. 05 — Documentation & Portfolio Polish 🔲 Planned
 
 ---
 

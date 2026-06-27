@@ -9,6 +9,8 @@ A Collection of Cybersecurity Home Labs created by me, for employers and aspirin
 ---
 
 ## 🚀 About Me
+💼 Currently: GSOC Engineer at Sicuro Group, UAE
+
 I am a dedicated IT Support professional with a strong foundation in systems administration and a passion for cybersecurity. After studying and working in **New Zealand**, I am currently based in the **UAE**, where I am honing my technical skills and building hands-on security labs. My goal is to transition into a **SOC Analyst** role and eventually return to the New Zealand tech sector.
 
 - 🔭 I’m currently working on: **Building a fully isolated SOC Home Lab — Phase 1 complete, currently hardening Linux servers.**
@@ -27,8 +29,8 @@ I am a dedicated IT Support professional with a strong foundation in systems adm
 
 ## 🛠️ Technical Skills
 - **Operating Systems:** Windows 10/11, Ubuntu Linux, Windows Server.
-- **Tools:** Oracle VirtualBox, Active Directory, Wireshark, Microsoft 365.
-- **Core Knowledge:** Networking (TCP/IP), Troubleshooting, Security Fundamentals.
+- **Tools:** Oracle VirtualBox, pfSense, Wazuh, Kali Linux, Wireshark, Active Directory, Microsoft 365
+- **Core Knowledge:** Networking (TCP/IP), Network Segmentation, Firewall Configuration, SIEM, Troubleshooting, Security Fundamentals
 
 ---
 
